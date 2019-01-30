@@ -32,7 +32,21 @@ class App extends Component {
             friend={friend}
           />
         ))}
-        
+        <form>
+          <input 
+            type="text"
+            placeholder="Name"
+          />
+          <input 
+            type="number"
+            placeholder="Age"
+          />
+          <input 
+            type="text"
+            placeholder="E-mail"
+          />
+          <button type="submit">Add New Friend!</button>
+        </form>
       </div>
     );
   }
