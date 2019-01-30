@@ -50,23 +50,29 @@ class App extends Component {
       age: this.state.age,
       email: this.state.email
     })
-    .then(response => {
-      this.setState({ data: response.data });
-    })
-    .catch(error => {
-      console.log(error);
+      .then(response => {
+        this.setState({ data: response.data });
+      })
+      .catch(error => {
+        console.log(error);
+      })
+    this.setState({
+      name: '',
+      age: 0,
+      email: ''
     })
   }
 
-  // deleteFriend = (id) => {
-  //   axios.delete(`http://localhost:5000/friends/${id}`)
-  //   .then(response => {
-  //     this.setState({ data: response.data });
-  //   })
-  //   .catch(error => {
-  //     console.log(error);
-  //   })
-  // }
+  deleteFriend = (id) => {
+    axios.delete(`http://localhost:5000/friends/${id}`)
+      .then(response => {
+        this.setState({ data: response.data });
+      })
+      .catch(error => {
+        console.log(error);
+      })
+
+  }
 
   render() {
     return (
@@ -78,10 +84,10 @@ class App extends Component {
               <FriendsList
                 key={friend.id}
                 friend={friend}
-                name={friend.name} 
-                age={friend.age} 
+                name={friend.name}
+                age={friend.age}
                 email={friend.email}
-                
+                deleteFriend={this.deleteFriend}
               />
             ))}
           </div>
@@ -89,24 +95,24 @@ class App extends Component {
             <h2>Add a New Friend...</h2>
             <FormInputs>
               <input
-                name="name" 
-                type="text" 
-                placeholder="Name" 
-                value={this.state.name} 
+                name="name"
+                type="text"
+                placeholder="Name"
+                value={this.state.name}
                 onChange={this.friendInput}
               />
               <input
                 name="age"
                 type="number"
                 placeholder="Age"
-                value={this.state.age} 
+                value={this.state.age}
                 onChange={this.friendInput}
               />
               <input
-                name="email" 
+                name="email"
                 type="text"
                 placeholder="E-mail"
-                value={this.state.email} 
+                value={this.state.email}
                 onChange={this.friendInput}
               />
               <button type="submit">Add New Friend!</button>
