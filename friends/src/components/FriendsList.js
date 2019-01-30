@@ -1,4 +1,9 @@
 import React from 'react';
+// import styled from 'styled-components';
+
+// const TrashCan = styled.i`
+//   border: 1px solid black;
+//   cursor: pointer;`
 
 const FriendsList = (props) => {
   return (
