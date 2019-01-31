@@ -11,6 +11,14 @@ const FriendListAndForm = styled.div`
   display: flex;
   justify-content: space-evenly;`
 
+const FriendDiv = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 68%;`
+
+const FriendForm = styled.form`
+  width: 28%;`
+
 const FormInputs = styled.div`
   display: flex;
   flex-direction: column;`
@@ -77,9 +85,9 @@ class App extends Component {
   render() {
     return (
       <AppWrapper>
-        <h1>Hello, HTTP/AJAX!</h1>
+        <h1>Hello, Friends!</h1>
         <FriendListAndForm>
-          <div>
+          <FriendDiv>
             {this.state.data.map(friend => (
               <FriendsList
                 key={friend.id}
@@ -90,8 +98,8 @@ class App extends Component {
                 deleteFriend={this.deleteFriend}
               />
             ))}
-          </div>
-          <form onSubmit={this.addNewFriend}>
+          </FriendDiv>
+          <FriendForm onSubmit={this.addNewFriend}>
             <h2>Add a New Friend...</h2>
             <FormInputs>
               <input
@@ -117,7 +125,7 @@ class App extends Component {
               />
               <button type="submit">Add New Friend!</button>
             </FormInputs>
-          </form>
+          </FriendForm>
         </FriendListAndForm>
       </AppWrapper>
     );
