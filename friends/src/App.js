@@ -85,6 +85,22 @@ class App extends Component {
 
   }
 
+  updateFriend = () => {
+    axios
+      .put(`http://localhost:5000/friends/${this.state.friend.id}`, this.state.friend)
+      .then(response => {
+        this.setState({ 
+          data: response.data, 
+          isUpdating: false,
+          friend: clearedFriend
+        });
+        this.props.history.push('/FriendsList');
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+
   render() {
     return (
       <AppWrapper>
@@ -102,9 +118,9 @@ class App extends Component {
               />
             ))}
           </FriendDiv>
-          <FriendForm 
-            addNewFriend={this.addNewFriend} 
-            friendInput={this.friendInput} 
+          <FriendForm
+            addNewFriend={this.addNewFriend}
+            friendInput={this.friendInput}
             friend={this.state.friend}
           />
         </FriendListAndForm>
