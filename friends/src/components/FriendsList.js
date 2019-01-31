@@ -15,10 +15,11 @@ const GreenSpan = styled.span`
   font-weight: bold;
   font-size: 15px;`
 
-const TrashCan = styled.div`
+const ActionIcon = styled.div`
   border: 1px solid black;
   cursor: pointer;
-  background: rgb(166, 190, 161);`
+  background: rgb(166, 190, 161);
+  margin: 5px;`
 
 const FriendsList = (props) => {
   return (
@@ -26,9 +27,12 @@ const FriendsList = (props) => {
       <h2>{props.friend.name}</h2>
       <h3><GreenSpan>Age:</GreenSpan><br/>{props.friend.age}</h3>
       <h3><GreenSpan>E-Mail Address:</GreenSpan><br/>{props.friend.email}</h3>
-      <TrashCan onClick={() => props.deleteFriend(props.friend.id)}>
+      <ActionIcon onClick={() => props.deleteFriend(props.friend.id)}>
         <i className="fas fa-trash-alt"></i>
-      </TrashCan>
+      </ActionIcon>
+      <ActionIcon onClick={() => props.updateFriend(props.friend.id)}>
+        <i class="fas fa-pencil-alt"></i>
+      </ActionIcon>
     </FriendCard>
   )
 }

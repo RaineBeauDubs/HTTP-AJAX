@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import FriendsList from './components/FriendsList'
+import FriendsList from './components/FriendsList';
+import FriendForm from './components/FriendForm';
 import styled from 'styled-components';
 import './App.css';
 
@@ -16,12 +17,13 @@ const FriendDiv = styled.div`
   flex-wrap: wrap;
   width: 68%;`
 
-const FriendForm = styled.form`
-  width: 28%;`
 
-const FormInputs = styled.div`
-  display: flex;
-  flex-direction: column;`
+
+const clearedFriend = {
+  name: '',
+  age: 0,
+  email: ''
+}
 
 
 class App extends Component {
@@ -31,7 +33,8 @@ class App extends Component {
       data: [],
       name: '',
       age: 0,
-      email: ''
+      email: '',
+      friend: clearedFriend
     }
   };
 
@@ -99,33 +102,11 @@ class App extends Component {
               />
             ))}
           </FriendDiv>
-          <FriendForm onSubmit={this.addNewFriend}>
-            <h2>Add a New Friend...</h2>
-            <FormInputs>
-              <input
-                name="name"
-                type="text"
-                placeholder="Name"
-                value={this.state.name}
-                onChange={this.friendInput}
-              />
-              <input
-                name="age"
-                type="number"
-                placeholder="Age"
-                value={this.state.age}
-                onChange={this.friendInput}
-              />
-              <input
-                name="email"
-                type="text"
-                placeholder="E-mail"
-                value={this.state.email}
-                onChange={this.friendInput}
-              />
-              <button type="submit">Add New Friend!</button>
-            </FormInputs>
-          </FriendForm>
+          <FriendForm 
+            addNewFriend={this.addNewFriend} 
+            friendInput={this.friendInput} 
+            friend={this.state.friend}
+          />
         </FriendListAndForm>
       </AppWrapper>
     );
